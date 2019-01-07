@@ -1,0 +1,24 @@
+.headerPane{
+	-fx-background-color: #cae1db;
+	-fx-border-color : #bad8d8; 
+    -fx-border-width : 0 0 7 0;
+}
+
+.imagebutton{
+	-fx-background-color: #cae1db;
+}
+
+.imagebutton:hover{
+	-fx-background-color: #bad8d8;
+	-fx-cursor: hand;
+}
+
+.boardPane{
+	-fx-background-color: #cae1db;
+}
+
+.bottomPane{
+	-fx-background-color: #cae1db;
+	-fx-border-color : #bad8d8; 
+    -fx-border-width : 7 0 0 0;
+}
