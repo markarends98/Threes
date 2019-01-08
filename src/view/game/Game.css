@@ -1,6 +1,6 @@
 .headerPane{
 	-fx-background-color: #cae1db;
-	-fx-border-color : #bad8d8; 
+	-fx-border-color : #9cbaba; 
     -fx-border-width : 0 0 7 0;
 }
 
@@ -19,6 +19,10 @@
 
 .bottomPane{
 	-fx-background-color: #cae1db;
-	-fx-border-color : #bad8d8; 
+	-fx-border-color : #9cbaba; 
     -fx-border-width : 7 0 0 0;
+}
+
+.alertBox{
+	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3),20, 0, 0, 0);
 }

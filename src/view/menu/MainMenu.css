@@ -1,0 +1,31 @@
+.mainPane{
+	-fx-background-color:#cae1db;
+}
+
+.mainButton{
+	-fx-background-color:#bad8d8;
+	-fx-border-color : #9cbaba; 
+    -fx-border-width : 0 0 7 0;
+}
+
+.mainButton:hover{
+	-fx-background-color:#9cbaba;
+	-fx-border-color : #bad8d8; 
+    -fx-border-width : 0 0 7 0;
+	-fx-cursor: hand;
+}
+
+.labelT{
+	 -fx-text-fill: #64ccfe;
+	 -fx-font-weight: bold;
+}
+
+.labelH{
+	 -fx-text-fill: #ff6780;
+	 -fx-font-weight: bold;
+}
+
+.labelREES{
+	-fx-text-fill: gray;
+	-fx-font-weight: bold;
+}

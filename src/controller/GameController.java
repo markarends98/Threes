@@ -1,16 +1,26 @@
 package controller;
 
+import java.io.File;
+
 import application.Main;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import model.SaveFile;
 import view.game.Game;
 
 public class GameController implements EventHandler<KeyEvent>{
 	private Main app;
 	private Game gv;
 	private BoardController bc;
+	
+	public GameController(Main main,SaveFile input) {
+		this.app = main;
+		this.bc = new BoardController(this,input);
+		this.gv = new Game(this);
+		getScene().setOnKeyPressed(this);
+	}
 	
 	public GameController(Main main) {
 		this.app = main;
@@ -50,5 +60,13 @@ public class GameController implements EventHandler<KeyEvent>{
 		else if(key.equals(KeyCode.DOWN)) {
 			bc.moveDown();
 		}
+		
+		gv.setTurn(bc.getModel().getCurrenturn());
+		gv.setDirection(bc.getModel().getDirection());
+		gv.setScore(bc.getModel().getScore());
+	}
+	
+	public void toMenu() {
+		app.toMenu();
 	}
 }

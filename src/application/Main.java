@@ -1,12 +1,13 @@
 package application;
 
 import controller.GameController;
+import controller.MainController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 	private Stage mainWindow;
-	private GameController gc;
+	private MainController mc;
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -16,12 +17,12 @@ public class Main extends Application {
 	public void start(Stage window) {
 		mainWindow = window;
 		mainWindow.setWidth(465);
-		mainWindow.setHeight(785);
+		mainWindow.setHeight(735);
 		mainWindow.setResizable(true);
 		
-		gc = new GameController(this);
+		mc = new MainController(this);
 		
-		mainWindow.setScene(gc.getScene());
+		toMenu();
 		mainWindow.show();
 	}
 	
@@ -29,8 +30,7 @@ public class Main extends Application {
 		return mainWindow;
 	}
 	
-	public void newGame() {
-		gc = new GameController(this);
-		mainWindow.setScene(gc.getScene());
+	public void toMenu() {
+		mainWindow.setScene(mc.getScene());
 	}
 }

@@ -8,54 +8,54 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="750.0" prefWidth="450.0" stylesheets="@Game.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="700.0" prefWidth="450.0" stylesheets="@Game.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane fx:id="headerPane" prefHeight="100.0" prefWidth="450.0" styleClass="headerPane">
          <children>
-            <AnchorPane fx:id="btnSaveGame" layoutX="148.0" layoutY="11.0" prefHeight="70.0" prefWidth="70.0" styleClass="imagebutton">
+            <AnchorPane fx:id="btnBack" prefHeight="93.0" prefWidth="100.0" styleClass="imagebutton">
                <children>
-                  <Label alignment="CENTER" layoutY="43.0" prefWidth="70.0" text="SAVE" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="16.0" layoutY="52.0" prefWidth="70.0" text="BACK" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="19.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="34.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/images/ic_back.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="btnSaveGame" layoutX="350.0" prefHeight="93.0" prefWidth="100.0" styleClass="imagebutton">
+               <children>
+                  <Label alignment="CENTER" layoutX="16.0" layoutY="52.0" prefWidth="70.0" text="SAVE" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="34.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../resources/images/ic_save_game.png" />
                      </image>
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="btnLoadGame" layoutX="231.0" layoutY="11.0" prefHeight="70.0" prefWidth="70.0" styleClass="imagebutton">
-               <children>
-                  <Label alignment="CENTER" layoutY="43.0" prefWidth="70.0" text="LOAD" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="19.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/images/ic_load_game.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="boardPane" layoutY="100.0" prefHeight="500.0" prefWidth="450.0" styleClass="boardPane" />
-      <AnchorPane fx:id="bottomPane" layoutY="600.0" prefHeight="150.0" prefWidth="450.0" styleClass="bottomPane">
+      <AnchorPane fx:id="boardPane" layoutY="100.0" prefHeight="450.0" prefWidth="450.0" styleClass="boardPane" />
+      <AnchorPane fx:id="bottomPane" layoutY="550.0" prefHeight="150.0" prefWidth="450.0" styleClass="bottomPane">
          <children>
             <Label fx:id="lblTurns" alignment="CENTER" layoutY="14.0" prefHeight="36.0" prefWidth="450.0" text="0" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="lblDirection" alignment="CENTER" layoutY="57.0" prefHeight="36.0" prefWidth="450.0" text="0" textFill="WHITE">
+            <Label fx:id="lblDirection" alignment="CENTER" layoutY="57.0" prefHeight="36.0" prefWidth="450.0" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="lblDirection1" alignment="CENTER" layoutY="100.0" prefHeight="36.0" prefWidth="450.0" text="Mark Arends: 2139401" textFill="WHITE">
+            <Label fx:id="lblPlayer" alignment="CENTER" layoutY="100.0" prefHeight="36.0" prefWidth="450.0" text="Mark Arends: 2139401" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>

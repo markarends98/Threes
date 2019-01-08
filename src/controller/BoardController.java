@@ -1,14 +1,23 @@
 package controller;
 
+import java.io.File;
+
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import model.BoardModel;
+import model.SaveFile;
 import view.board.Board;
 
 public class BoardController{
 	private GameController gc;
 	private Board bv;
 	private BoardModel bm;
+	
+	public BoardController(GameController gc,SaveFile input) {
+		this.gc = gc;
+		this.bm = new BoardModel(input);
+		this.bv = new Board(this);
+	}
 	
 	public BoardController(GameController gc) {
 		this.gc = gc;
@@ -25,28 +34,22 @@ public class BoardController{
 	}
 
 	public void moveUp() {
-		System.out.println("up");
+		bm.moveUp();
+		bv.refreshBoard();
 	}
 
 	public void moveLeft() {
-		System.out.println("left");	
-		
-		bm.writeToConsole();
 		bm.moveLeft();
 		bv.refreshBoard();
-		bm.writeToConsole();
 	}
 
 	public void moveRight() {
-		System.out.println("right");
-		
-		bm.writeToConsole();
 		bm.moveRight();
 		bv.refreshBoard();
-		bm.writeToConsole();
 	}
 
 	public void moveDown() {
-		System.out.println("down");
+		bm.moveDown();
+		bv.refreshBoard();
 	}
 }

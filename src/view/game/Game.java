@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import model.SaveFile;
 
 public class Game implements Initializable{
 	private GameController gc;
@@ -23,7 +24,9 @@ public class Game implements Initializable{
 	@FXML private AnchorPane boardPane;
 	
 	@FXML private AnchorPane btnSaveGame;
-	@FXML private AnchorPane btnLoadGame;
+	@FXML private AnchorPane btnBack;
+	@FXML private Label lblTurns;
+	@FXML private Label lblDirection;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -39,17 +42,6 @@ public class Game implements Initializable{
 		return gv;
 	}
 
-	private void setListeners() {
-		btnSaveGame.setOnMouseClicked((MouseEvent event) -> {
-			System.out.println("save");
-			gc.getApp().newGame();
-        });
-		
-		btnLoadGame.setOnMouseClicked((MouseEvent event) -> {
-			System.out.println("load");
-		});
-	}
-
 	private void load() {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Game.fxml"));
@@ -62,5 +54,28 @@ public class Game implements Initializable{
 		
 		boardPane.getChildren().add(gc.getBoardController().getView());
 		setListeners();
+	}
+	
+	private void setListeners() {
+		btnSaveGame.setOnMouseClicked((MouseEvent event) -> {
+			SaveFile sf = new SaveFile();
+			sf.save(gc.getBoardController().getModel().getTiles());
+        });
+		
+		btnBack.setOnMouseClicked((MouseEvent event) -> {
+			gc.toMenu();
+		});
+	}
+	
+	public void setTurn(int currenturn) {
+		lblTurns.setText(currenturn +"");
+	}
+	
+	public void setDirection(String direction) {
+		lblDirection.setText(direction);
+	}
+
+	public void setScore(int score) {
+		gc.getApp().getMainWindow().setTitle("Currentscore: " + score);		
 	}
 }

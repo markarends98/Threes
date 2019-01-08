@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="700.0" prefWidth="450.0" styleClass="mainPane" stylesheets="@MainMenu.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox layoutX="25.0" layoutY="109.0" prefHeight="100.0" prefWidth="400.0">
+         <padding>
+            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+         </padding>
+         <children>
+            <Label alignment="CENTER" prefHeight="100.0" prefWidth="66.0" styleClass="labelT" text="T">
+               <font>
+                  <Font size="64.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="100.0" prefWidth="66.0" styleClass="labelH" text="H">
+               <font>
+                  <Font size="64.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="100.0" prefWidth="66.0" styleClass="labelREES" text="R">
+               <font>
+                  <Font size="64.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="100.0" prefWidth="66.0" styleClass="labelREES" text="E">
+               <font>
+                  <Font size="64.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="100.0" prefWidth="66.0" styleClass="labelREES" text="E">
+               <font>
+                  <Font size="64.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="100.0" prefWidth="66.0" styleClass="labelREES" text="S">
+               <font>
+                  <Font size="64.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <VBox layoutY="200.0" prefHeight="300.0" prefWidth="450.0" spacing="25.0">
+         <children>
+            <AnchorPane fx:id="btnNewGame" prefHeight="130.0" prefWidth="180.0" styleClass="mainButton">
+               <children>
+                  <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="33.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/images/ic_play_game.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="134.0" layoutY="32.0" prefHeight="50.0" text="NEW GAME" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding></AnchorPane>
+            <AnchorPane fx:id="btnLoadGame" prefHeight="130.0" prefWidth="180.0" styleClass="mainButton">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="33.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/images/ic_save_game.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="134.0" layoutY="32.0" prefHeight="50.0" text="LOAD GAME" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+         </children>
+         <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>
