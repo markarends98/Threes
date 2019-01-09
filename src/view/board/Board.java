@@ -41,7 +41,7 @@ public class Board extends AnchorPane implements Initializable{
 			e.printStackTrace();
 		}
 		
-		Tile[][] tiles = bc.getModel().getTiles();
+		Tile[][] tiles = bc.getTiles();
 		
 		for(int y = 0; y < 4;y++) {
 			for(int x = 0; x < 4;x++) {
@@ -53,7 +53,7 @@ public class Board extends AnchorPane implements Initializable{
 	public void refreshBoard(){
 		boardGrid.getChildren().clear();
 		
-		Tile[][] tiles = bc.getModel().getTiles();
+		Tile[][] tiles = bc.getTiles();
 		for(int y = 0; y < 4;y++) {
 			for(int x = 0; x < 4;x++) {
 				boardGrid.add(tiles[y][x], x, y);

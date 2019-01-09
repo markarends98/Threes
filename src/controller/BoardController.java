@@ -7,15 +7,16 @@ import javafx.scene.input.KeyEvent;
 import model.BoardModel;
 import model.SaveFile;
 import view.board.Board;
+import view.tile.Tile;
 
 public class BoardController{
 	private GameController gc;
 	private Board bv;
 	private BoardModel bm;
 	
-	public BoardController(GameController gc,SaveFile input) {
+	public BoardController(GameController gc,Tile[][] tiles) {
 		this.gc = gc;
-		this.bm = new BoardModel(input);
+		this.bm = new BoardModel(tiles);
 		this.bv = new Board(this);
 	}
 	
@@ -28,11 +29,9 @@ public class BoardController{
 	public Board getView(){
 		return bv;
 	}
-	
-	public BoardModel getModel(){
-		return bm;
-	}
 
+	
+	//board movement
 	public void moveUp() {
 		bm.moveUp();
 		bv.refreshBoard();
@@ -51,5 +50,25 @@ public class BoardController{
 	public void moveDown() {
 		bm.moveDown();
 		bv.refreshBoard();
+	}
+
+	public boolean isGameOver() {
+		return bm.isGameOver();
+	}
+
+	public Tile[][] getTiles() {
+		return bm.getTiles();
+	}
+
+	public int getScore() {
+		return bm.getScore();
+	}
+
+	public int getCurrenturn() {
+		return bm.getCurrenturn();
+	}
+
+	public String getDirection() {
+		return bm.getDirection();
 	}
 }

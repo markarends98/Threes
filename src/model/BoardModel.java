@@ -16,16 +16,15 @@ public class BoardModel {
 		loadNewBoard();
 	}
 	
-	public BoardModel(SaveFile input){
-		loadNewBoard();
-		tiles = input.loadSave(tiles);
+	//load an existing situation
+	public BoardModel(Tile[][] tiles){
+		resetValues();
+		this.tiles = tiles;
 	}
 	
 	//create a new board
 	public void loadNewBoard() {
-		currentTurn = 0;
-		direction = "";
-		score = 0;
+		resetValues();
 		
 		tiles = new Tile[4][4];
 		
@@ -40,6 +39,12 @@ public class BoardModel {
 	
 	public Tile[][] getTiles(){
 		return this.tiles;
+	}
+	
+	public void resetValues() {
+		currentTurn = 0;
+		direction = "Make your first move!";
+		score = 0;
 	}
 
 	//spawn first 2 tiles to begin
@@ -74,7 +79,7 @@ public class BoardModel {
 					if(tile.getTile().getValue() > 0) {					
 						if(tileToLeft.getTile().getValue() > 0) {
 							//tile to left is not empty
-							if(tileToLeft.getTile().getX() == 0) {
+							if(tileToLeft.getTile().isEdgeTile()) {
 								//tile to left is on the edge
 								if(canMerge(tile.getTile().getValue(), tileToLeft.getTile().getValue())) {
 									//move and merge tiles
@@ -111,7 +116,6 @@ public class BoardModel {
 			currentTurn++;
 			direction = "Left";
 		}
-		System.out.println(isGameOver());
 	}
 	
 	public void moveRight() {
@@ -127,7 +131,7 @@ public class BoardModel {
 					if(tile.getTile().getValue() > 0) {					
 						if(tileToRight.getTile().getValue() > 0) {
 							//tile to right is not empty
-							if(tileToRight.getTile().getX() == 3) {
+							if(tileToRight.getTile().isEdgeTile()) {
 								//tile to right is on the edge
 								if(canMerge(tile.getTile().getValue(), tileToRight.getTile().getValue())) {
 									//move and merge tiles
@@ -164,7 +168,6 @@ public class BoardModel {
 			currentTurn++;
 			direction = "Right";
 		}
-		System.out.println(isGameOver());
 	}
 		
 	public void moveUp() {
@@ -180,7 +183,7 @@ public class BoardModel {
 					if(tile.getTile().getValue() > 0) {		
 						if(tileAbove.getTile().getValue() > 0) {
 							//tile above is not empty
-							if(tileAbove.getTile().getY() == 0) {
+							if(tileAbove.getTile().isEdgeTile()) {
 								//tile above is on the edge
 								if(canMerge(tile.getTile().getValue(), tileAbove.getTile().getValue())) {
 									//move and merge tiles
@@ -217,7 +220,6 @@ public class BoardModel {
 			currentTurn++;
 			direction = "Up";
 		}
-		System.out.println(isGameOver());
 	}
 	
 	public void moveDown() {
@@ -233,7 +235,7 @@ public class BoardModel {
 					if(tile.getTile().getValue() > 0) {					
 						if(tileBelow.getTile().getValue() > 0) {
 							//tile below is not empty
-							if(tileBelow.getTile().getY() == 3) {
+							if(tileBelow.getTile().isEdgeTile()) {
 								//tile below is on the edge
 								if(canMerge(tile.getTile().getValue(), tileBelow.getTile().getValue())) {
 									//move and merge tiles
@@ -270,8 +272,6 @@ public class BoardModel {
 			currentTurn++;
 			direction = "Up";
 		}
-		
-		System.out.println(isGameOver());
 	}
 	
 	public boolean isGameOver() {
@@ -343,6 +343,7 @@ public class BoardModel {
 		spawnableTiles.clear();
 	}
 
+	//get game stats
 	public int getCurrenturn() {
 		return currentTurn;
 	}

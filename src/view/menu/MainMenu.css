@@ -29,3 +29,8 @@
 	-fx-text-fill: gray;
 	-fx-font-weight: bold;
 }
+
+.labelError{
+	-fx-text-fill: #ff6780;
+	-fx-font-size: 18;
+}

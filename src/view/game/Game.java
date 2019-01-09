@@ -22,11 +22,19 @@ public class Game implements Initializable{
 
 	@FXML private AnchorPane headerPane;
 	@FXML private AnchorPane boardPane;
-	
 	@FXML private AnchorPane btnSaveGame;
 	@FXML private AnchorPane btnBack;
 	@FXML private Label lblTurns;
 	@FXML private Label lblDirection;
+	
+	@FXML private AnchorPane alertGameOver;
+	@FXML private Label lblEndScore;
+	@FXML private AnchorPane btnPlayAgain;
+	@FXML private AnchorPane btnQuit;
+	
+	@FXML private AnchorPane alertSave;
+	@FXML private Label lblSaveTitle;
+	@FXML private Label lblSaveMessage;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -53,16 +61,24 @@ public class Game implements Initializable{
 		}
 		
 		boardPane.getChildren().add(gc.getBoardController().getView());
+		hideAlertBoxes();
 		setListeners();
 	}
 	
 	private void setListeners() {
 		btnSaveGame.setOnMouseClicked((MouseEvent event) -> {
-			SaveFile sf = new SaveFile();
-			sf.save(gc.getBoardController().getModel().getTiles());
+			gc.saveGame();
         });
 		
 		btnBack.setOnMouseClicked((MouseEvent event) -> {
+			gc.toMenu();
+		});
+		
+		btnPlayAgain.setOnMouseClicked((MouseEvent event) -> {
+			gc.newGame();
+		});
+		
+		btnQuit.setOnMouseClicked((MouseEvent event) -> {
 			gc.toMenu();
 		});
 	}
@@ -77,5 +93,33 @@ public class Game implements Initializable{
 
 	public void setScore(int score) {
 		gc.getApp().getMainWindow().setTitle("Currentscore: " + score);		
+	}
+	
+	public void showGameOver() {
+		int score = gc.getBoardController().getScore();
+		lblEndScore.setText(score + "");
+		gc.disableControls();
+		alertGameOver.setVisible(true);
+	}
+	
+	public void showSaveOk() {
+		lblSaveTitle.getStyleClass().removeAll();
+		lblSaveTitle.getStyleClass().add("lblSaveTitleOk");
+		lblSaveTitle.setText("GAME SAVED");
+		lblSaveMessage.setText("Game saved successfully");
+		alertSave.setVisible(true);
+	}
+	
+	public void showSaveFailed() {
+		lblSaveTitle.getStyleClass().removeAll();
+		lblSaveTitle.getStyleClass().add("lblSaveTitleFail");
+		lblSaveTitle.setText("OOPS!");
+		lblSaveMessage.setText("Error while saving game, try again later!");
+		alertSave.setVisible(true);
+	}
+
+	public void hideAlertBoxes() {
+		alertGameOver.setVisible(false);
+		alertSave.setVisible(false);
 	}
 }

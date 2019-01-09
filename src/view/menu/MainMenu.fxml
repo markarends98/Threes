@@ -86,5 +86,6 @@
             <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
          </padding>
       </VBox>
+      <Label fx:id="lblError" layoutX="64.0" layoutY="500.0" styleClass="labelError" text="Error while loading game, try again later!" />
    </children>
 </AnchorPane>

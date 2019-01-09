@@ -13,7 +13,7 @@ public class SaveFile {
 	private File file = new File("resources/input.txt");
 	private String delimiter = " ";
 	
-	public void save(Tile[][] tiles) {
+	public boolean save(Tile[][] tiles) {
 		Tile cTile;
 		String sb = "";
 		try (PrintStream saveFile = new PrintStream(file)) {
@@ -30,11 +30,14 @@ public class SaveFile {
 			}
 			saveFile.close();
 		} catch (IOException e) {
-			System.out.println("error while saving");
+			System.out.println("Error while saving");
+			return false;
 		}
+		return true;
 	}
 	
-	public Tile[][] loadSave(Tile[][] tiles){
+	public Tile[][] loadSave(){
+		Tile[][] tiles = new Tile[4][4];
 		if(file.exists()) {
 			try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 			    String line;
@@ -46,8 +49,8 @@ public class SaveFile {
 					tiles[y][x] = new Tile(new TileModel(val,x,y));
 			    }
 			} catch (IOException e) {
-		
-				e.printStackTrace();
+				System.out.println("Error while loading savefile");
+				return null;
 			}
 		}else {
 			Random r = new Random();

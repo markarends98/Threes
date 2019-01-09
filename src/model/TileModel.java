@@ -22,4 +22,8 @@ public class TileModel {
 	public int getY() {
 		return this.ywaarde;
 	}
+	
+	public boolean isEdgeTile() {
+		return xwaarde == 0 || xwaarde == 3 || ywaarde == 0 || ywaarde == 3;
+	}
 }

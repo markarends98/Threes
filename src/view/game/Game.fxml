@@ -50,7 +50,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="lblDirection" alignment="CENTER" layoutY="57.0" prefHeight="36.0" prefWidth="450.0" textFill="WHITE">
+            <Label fx:id="lblDirection" alignment="CENTER" layoutY="57.0" prefHeight="36.0" prefWidth="450.0" text="Make your first move!" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -60,6 +60,83 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="alertGameOver" prefHeight="700.0" prefWidth="450.0" styleClass="alertBox" visible="false">
+         <children>
+            <BorderPane layoutX="25.0" layoutY="242.0" prefHeight="200.0" prefWidth="400.0" styleClass="alertBoxMessage">
+               <top>
+                  <AnchorPane BorderPane.alignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="400.0" text="GAME OVER" textFill="#ff6780">
+                           <font>
+                              <Font name="System Bold" size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </top>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" layoutY="14.0" prefWidth="400.0" text="Your score:" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblEndScore" alignment="CENTER" layoutY="41.0" prefWidth="400.0" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </center>
+               <bottom>
+                  <AnchorPane prefHeight="50.0" prefWidth="400.0" BorderPane.alignment="CENTER_LEFT">
+                     <children>
+                        <AnchorPane fx:id="btnPlayAgain" prefHeight="50.0" prefWidth="200.0" styleClass="alertBoxButton">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="50.0" prefWidth="200.0" text="PLAY AGAIN" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="btnQuit" layoutX="200.0" prefHeight="50.0" prefWidth="200.0" styleClass="alertBoxButton">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="50.0" prefWidth="200.0" text="QUIT" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </bottom>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="alertSave" prefHeight="700.0" prefWidth="450.0" styleClass="alertBox">
+         <children>
+            <BorderPane layoutX="25.0" layoutY="242.0" prefHeight="200.0" prefWidth="400.0" styleClass="alertBoxMessage">
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="lblSaveMessage" alignment="CENTER" layoutY="48.0" prefWidth="400.0" text="message" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </center>
+               <top>
+                  <AnchorPane BorderPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="lblSaveTitle" alignment="CENTER" prefHeight="50.0" prefWidth="400.0" text="GAME OVER" textFill="#68ff81">
+                           <font>
+                              <Font name="System Bold" size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </top>
+            </BorderPane>
          </children>
       </AnchorPane>
    </children>

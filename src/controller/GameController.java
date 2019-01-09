@@ -3,34 +3,40 @@ package controller;
 import java.io.File;
 
 import application.Main;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.util.Duration;
 import model.SaveFile;
 import view.game.Game;
+import view.tile.Tile;
 
 public class GameController implements EventHandler<KeyEvent>{
-	private Main app;
 	private Game gv;
 	private BoardController bc;
+	private MainController mc;
 	
-	public GameController(Main main,SaveFile input) {
-		this.app = main;
-		this.bc = new BoardController(this,input);
+	public GameController(MainController mc,Tile[][] tiles) {
+		this.mc = mc;
+		this.bc = new BoardController(this,tiles);
 		this.gv = new Game(this);
-		getScene().setOnKeyPressed(this);
+		refreshGameStats();
+		enableControls();
 	}
 	
-	public GameController(Main main) {
-		this.app = main;
+	public GameController(MainController mc) {
+		this.mc = mc;
 		this.bc = new BoardController(this);
 		this.gv = new Game(this);
-		getScene().setOnKeyPressed(this);
+		refreshGameStats();
+		enableControls();
 	}
 
 	public Main getApp() {
-		return app;
+		return mc.getApp();
 	}
 	
 	public Game getView(){
@@ -41,10 +47,15 @@ public class GameController implements EventHandler<KeyEvent>{
 		return gv.getScene();
 	}
 	
+	public MainController getMainController() {
+		return mc;
+	}
+	
 	public BoardController getBoardController() {
 		return bc;
 	}
 	
+	//listener for board movement
 	@Override
 	public void handle(KeyEvent event) {
 		KeyCode key = event.getCode();
@@ -61,12 +72,54 @@ public class GameController implements EventHandler<KeyEvent>{
 			bc.moveDown();
 		}
 		
-		gv.setTurn(bc.getModel().getCurrenturn());
-		gv.setDirection(bc.getModel().getDirection());
-		gv.setScore(bc.getModel().getScore());
+		refreshGameStats();
+		
+		if(bc.isGameOver()) {
+			gv.showGameOver();
+		}
+	}
+	
+	public void refreshGameStats(){
+		gv.setTurn(bc.getCurrenturn());
+		gv.setDirection(bc.getDirection());
+		gv.setScore(bc.getScore());
 	}
 	
 	public void toMenu() {
-		app.toMenu();
+		mc.toMenu();
+	}
+
+	public void newGame() {
+		mc.newGame();
+	}
+	
+	public void enableControls() {
+		getScene().setOnKeyPressed(this);
+	}
+	
+	public void disableControls() {
+		getScene().setOnKeyPressed(null);
+	}
+
+	//handle saving game
+	public void saveGame() {
+		disableControls();
+		SaveFile sf = new SaveFile();
+		boolean save = sf.save(getBoardController().getTiles());
+		if(save) {
+			gv.showSaveOk();
+		}else {
+			gv.showSaveFailed();
+		}
+		
+		Timeline timeline = new Timeline(new KeyFrame(
+		        Duration.millis(2000),
+		        ae -> hideAlertBoxes()));
+		timeline.play();
+	}
+	
+	public void hideAlertBoxes(){
+		enableControls();
+		gv.hideAlertBoxes();
 	}
 }

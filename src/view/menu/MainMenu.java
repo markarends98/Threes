@@ -20,6 +20,7 @@ public class MainMenu implements Initializable{
 	
 	@FXML private AnchorPane btnNewGame;
 	@FXML private AnchorPane btnLoadGame;
+	@FXML private Label lblError;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -41,6 +42,7 @@ public class MainMenu implements Initializable{
 			e.printStackTrace();
 		}
 		setListeners();
+		hideErrorLabel();
 	}
 
 	private void setListeners() {
@@ -55,5 +57,13 @@ public class MainMenu implements Initializable{
 
 	public Scene getScene() {
 		return mv;
+	}
+	
+	public void showErrorLabel() {
+		lblError.setVisible(true);
+	}
+	
+	public void hideErrorLabel() {
+		lblError.setVisible(false);
 	}
 }

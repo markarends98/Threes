@@ -24,5 +24,37 @@
 }
 
 .alertBox{
+	-fx-background-color: rgba(0,0,0,0.3);
+}
+.alertBoxMessage{
+	-fx-background-color: #9cbaba;
 	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3),20, 0, 0, 0);
+}
+
+.alertBoxButton{
+	-fx-background-color: #9cbaba;
+
+}
+
+.alertBoxButton:hover{
+	-fx-background-color: #cae1db;
+	-fx-cursor: hand;
+}
+
+.alertBoxButton > Label{
+	-fx-font-size: 18;
+	-fx-font-weight: bold;
+	-fx-text-fill: white;
+}
+
+.lblSaveTitleOk{
+	-fx-font-size: 25;
+	-fx-font-weight: bold;
+	-fx-text-fill: #68ff81;
+}
+
+.lblSaveTitleFail{
+	-fx-font-size: 25;
+	-fx-font-weight: bold;
+	-fx-text-fill: #ff6780;
 }

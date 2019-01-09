@@ -21,16 +21,11 @@ public class Main extends Application {
 		mainWindow.setResizable(true);
 		
 		mc = new MainController(this);
-		
-		toMenu();
+		mc.toMenu();
 		mainWindow.show();
 	}
 	
 	public Stage getMainWindow() {
 		return mainWindow;
-	}
-	
-	public void toMenu() {
-		mainWindow.setScene(mc.getScene());
 	}
 }
