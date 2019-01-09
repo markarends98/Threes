@@ -50,11 +50,29 @@
 .lblSaveTitleOk{
 	-fx-font-size: 25;
 	-fx-font-weight: bold;
-	-fx-text-fill: #68ff81;
+	-fx-text-fill: #6fe883;
 }
 
 .lblSaveTitleFail{
 	-fx-font-size: 25;
 	-fx-font-weight: bold;
 	-fx-text-fill: #ff6780;
+}
+
+.tile1{
+	-fx-background-color: #64ccfe;
+	-fx-border-color : #60afed; 
+    -fx-border-width : 0 0 7 0;
+}
+
+.tile2{
+	-fx-background-color: #ff6780;
+	-fx-border-color : #ba6284; 
+    -fx-border-width : 0 0 7 0;
+}
+
+.tile3{
+	-fx-background-color: #ffffff;
+	-fx-border-color : #eaeaea; 
+    -fx-border-width : 0 0 7 0;
 }

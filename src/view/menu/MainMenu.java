@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import controller.MainController;
+import controller.MenuController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,7 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import model.TileModel;
 
 public class MainMenu implements Initializable{
-	private MainController mc;
+	private MenuController mc;
 	private Scene mv;
 	
 	@FXML private AnchorPane btnNewGame;
@@ -27,7 +27,7 @@ public class MainMenu implements Initializable{
 		
 	}
 
-	public MainMenu(MainController mc) {
+	public MainMenu(MenuController mc) {
 		this.mc= mc;
 		load();
 	}
@@ -40,6 +40,7 @@ public class MainMenu implements Initializable{
 	        mv = new Scene(scene);
 		} catch (IOException e) {
 			e.printStackTrace();
+			return;
 		}
 		setListeners();
 		hideErrorLabel();

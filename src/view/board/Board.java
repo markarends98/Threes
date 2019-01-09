@@ -39,24 +39,19 @@ public class Board extends AnchorPane implements Initializable{
 	        this.getChildren().add( loader.load());
 		} catch (IOException e) {
 			e.printStackTrace();
+			return;
 		}
 		
-		Tile[][] tiles = bc.getTiles();
-		
-		for(int y = 0; y < 4;y++) {
-			for(int x = 0; x < 4;x++) {
-				boardGrid.add(tiles[y][x], x, y);
-			}
-		}
+		refreshBoard();
 	}
 	
 	public void refreshBoard(){
 		boardGrid.getChildren().clear();
 		
-		Tile[][] tiles = bc.getTiles();
+		TileModel[][] tiles = bc.getTiles();
 		for(int y = 0; y < 4;y++) {
 			for(int x = 0; x < 4;x++) {
-				boardGrid.add(tiles[y][x], x, y);
+				boardGrid.add(new Tile(tiles[y][x]), x, y);
 			}
 		}
 	}

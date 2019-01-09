@@ -2,28 +2,51 @@ package model;
 
 public class TileModel {
 	private int value;
-	private int xwaarde;
-	private int ywaarde;
 	
-	public TileModel(int value,int x, int y) {
-		this.value = value;
-		this.xwaarde = x;
-		this.ywaarde = y;
+	public TileModel() {
+		this(0);
+	}
+	
+	public TileModel(int value) {
+		setValue(value);
 	}
 
 	public int getValue() {
 		return this.value;
 	}
 	
-	public int getX() {
-		return this.xwaarde;
-	}
+	public void setValue(int value) {
+		if(value < 0) {
+			value = 0;
+		}
+    	this.value = value;
+    }
 	
-	public int getY() {
-		return this.ywaarde;
+	/**
+	 * check if a tile can merge with another tile
+	 * @param tile
+	 * @return
+	 */
+	public boolean canMerge(TileModel tile) {
+		if(tile == null) {
+			return false;
+		}else if((value == 1 && tile.getValue() == 2) || (value == 2 && tile.getValue() == 1)) {
+			return true;
+		}
+		else if((value > 2 && tile.getValue() > 2) && (value == tile.getValue())){
+			return true;
+		}
+		return false;
 	}
-	
-	public boolean isEdgeTile() {
-		return xwaarde == 0 || xwaarde == 3 || ywaarde == 0 || ywaarde == 3;
-	}
+
+    public void merge(TileModel tile){
+    	if(tile == null) {
+			return;
+		}
+        this.setValue(value + tile.getValue());
+    }
+
+    public void clear(){
+        this.setValue(0);
+    }
 }

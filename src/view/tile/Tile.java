@@ -36,13 +36,10 @@ public class Tile extends AnchorPane implements Initializable{
 	        this.getChildren().add(loader.load());
 		} catch (IOException e) {
 			e.printStackTrace();
+			return;
 		}
 		
 		lblValue.setText(String.valueOf(mTile.getValue()));
-	}
-	
-	public TileModel getTile() {
-		return mTile;
 	}
 
 	private void setColor() {
@@ -57,6 +54,5 @@ public class Tile extends AnchorPane implements Initializable{
 		}else if(value >= 3) {
 			tile.getStyleClass().add("tile3");
 		}
-
 	}
 }

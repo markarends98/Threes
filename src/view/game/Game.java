@@ -15,6 +15,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import model.SaveFile;
+import model.TileModel;
 
 public class Game implements Initializable{
 	private GameController gc;
@@ -24,6 +25,8 @@ public class Game implements Initializable{
 	@FXML private AnchorPane boardPane;
 	@FXML private AnchorPane btnSaveGame;
 	@FXML private AnchorPane btnBack;
+	@FXML private AnchorPane nextTilePane;
+
 	@FXML private Label lblTurns;
 	@FXML private Label lblDirection;
 	
@@ -58,6 +61,7 @@ public class Game implements Initializable{
 	        gv = new Scene(scene);
 		} catch (IOException e) {
 			e.printStackTrace();
+			return;
 		}
 		
 		boardPane.getChildren().add(gc.getBoardController().getView());
@@ -121,5 +125,20 @@ public class Game implements Initializable{
 	public void hideAlertBoxes() {
 		alertGameOver.setVisible(false);
 		alertSave.setVisible(false);
+	}
+
+	//show the next tile that will spawn
+	public void setNextTile(TileModel nextTile) {
+		int value = nextTile.getValue();
+		nextTilePane.getStyleClass().clear();
+		
+		if(value == 1) {
+			nextTilePane.getStyleClass().add("tile1");
+		}
+		else if(value == 2) {
+			nextTilePane.getStyleClass().add("tile2");
+		}else if(value >= 3) {
+			nextTilePane.getStyleClass().add("tile3");
+		}
 	}
 }

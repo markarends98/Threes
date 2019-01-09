@@ -1,30 +1,26 @@
 package controller;
 
-import java.io.File;
-
 import application.Main;
+import controller.audio.AudioController;
 import javafx.scene.Scene;
 import model.SaveFile;
-import view.game.Game;
+import model.TileModel;
 import view.menu.MainMenu;
-import view.tile.Tile;
 
-public class MainController {
+public class MenuController {
 	private Main app;
 	private MainMenu mv;
 	private GameController gc;
+	private AudioController ac;
 	
-	public MainController(Main main) {
-		this.app = main;
+	public MenuController(Main app) {
+		this.app = app;
 		this.mv = new MainMenu(this);
+		this.ac = new AudioController();
 	}
 
 	public Main getApp() {
 		return app;
-	}
-	
-	public MainMenu getView(){
-		return mv;
 	}
 	
 	public Scene getScene(){
@@ -32,12 +28,19 @@ public class MainController {
 	}
 	
 	public void toMenu() {
+		ac.stopAudio();
 		mv.hideErrorLabel();
+		app.getMainWindow().setTitle("");
 		app.getMainWindow().setScene(getScene());
 	}
 	
 	public void newGame() {
-		gc = new GameController(this);
+		newGame(null);
+	}
+	
+	private void newGame(TileModel[][] tiles){
+		ac.playAudio();
+		gc = new GameController(this,tiles);
 		app.getMainWindow().setScene(gc.getScene());
 	}
 	
@@ -45,10 +48,9 @@ public class MainController {
 	public void loadGame() {
 		SaveFile f = new SaveFile();
 		
-		Tile[][] tiles = f.loadSave();
+		TileModel[][] tiles = f.loadSave();
 		if(tiles != null) {
-			gc = new GameController(this,tiles);
-			app.getMainWindow().setScene(gc.getScene());
+			newGame(tiles);
 		}else {
 			mv.showErrorLabel();
 		}
