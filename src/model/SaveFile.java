@@ -8,8 +8,13 @@ import java.io.PrintStream;
 import java.util.Random;
 
 public class SaveFile {
-	private File file = new File("resources/input.txt");
+	private File file = new File("src/resources/input.txt");
 	private String delimiter = " ";
+	
+	public SaveFile() {
+		System.out.println(file.getPath());
+		System.out.println(file.getAbsoluteFile().getAbsolutePath());
+	}
 	
 	/**
 	 * save a game
