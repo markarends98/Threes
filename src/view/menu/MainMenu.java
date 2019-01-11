@@ -12,7 +12,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import model.TileModel;
 
 public class MainMenu implements Initializable{
 	private MenuController mc;

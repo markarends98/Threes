@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Random;
 
-import view.tile.Tile;
-
 public class SaveFile {
 	private File file = new File("resources/input.txt");
 	private String delimiter = " ";

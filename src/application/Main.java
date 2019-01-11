@@ -1,15 +1,8 @@
 package application;
 
-import java.io.IOException;
-import java.net.URL;
-
 import controller.MenuController;
 import javafx.application.Application;
-import javafx.scene.media.AudioClip;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 public class Main extends Application {
 	private Stage mainWindow;

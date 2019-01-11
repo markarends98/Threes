@@ -1,9 +1,9 @@
-package controller.audio;
+package controller;
 
 import javafx.scene.media.AudioClip;
 
 public class AudioController {
-	private String audioFile = "music.wav";
+	private String audioFile = "/resources/audio/music.wav";
 	private AudioClip clip;
 	
 	public AudioController() {

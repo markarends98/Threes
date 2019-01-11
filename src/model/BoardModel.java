@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.List;
 
-import view.tile.Tile;
-
 public class BoardModel {
 	public static final int SIZE = 4;
 	private TileModel[][] tiles;

@@ -7,7 +7,6 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.media.AudioClip;
 import javafx.util.Duration;
 import model.Direction;
 import model.SaveFile;
