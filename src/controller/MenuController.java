@@ -2,8 +2,6 @@ package controller;
 
 import application.Main;
 import javafx.scene.Scene;
-import model.SaveFile;
-import model.TileModel;
 import view.menu.MainMenu;
 
 public class MenuController {
@@ -33,23 +31,19 @@ public class MenuController {
 		app.getMainWindow().setScene(getScene());
 	}
 	
-	public void newGame() {
-		newGame(null);
-	}
-	
-	private void newGame(TileModel[][] tiles){
+	public void newGame(){
+		gc = new GameController(this);
 		ac.playAudio();
-		gc = new GameController(this,tiles);
 		app.getMainWindow().setScene(gc.getScene());
 	}
 	
 	//handle loading game
 	public void loadGame() {
-		SaveFile f = new SaveFile();
-		
-		TileModel[][] tiles = f.loadSave();
-		if(tiles != null) {
-			newGame(tiles);
+		gc = new GameController(this);
+		boolean load = gc.getBoardController().loadGame();
+		if(load) {
+			ac.playAudio();
+			app.getMainWindow().setScene(gc.getScene());
 		}else {
 			mv.showErrorLabel();
 		}

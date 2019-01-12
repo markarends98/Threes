@@ -12,29 +12,20 @@ public class BoardModel {
 	private String lastDirection = "";
 	private TileModel nextTile;
 	
-	public BoardModel(){
-		this(null);
-	}
-	
 	/**
 	 * load an existing situation
 	 * @param tiles
 	 */
-	public BoardModel(TileModel[][] tiles){
+	public BoardModel(){
 		resetValues();
-		if(tiles != null) {
-			this.tiles = tiles;
-		}else {
-			loadNewBoard();
-		}
-		generateNewTile();
+		loadNewBoard();
 	}
 	
 	/**
 	 * create a new board
 	 */
 	public void loadNewBoard() {		
-		tiles = new TileModel[SIZE][4];
+		tiles = new TileModel[SIZE][SIZE];
 		
 		for(int y = 0; y < 4;y++) {
 			for(int x = 0; x < 4;x++) {
@@ -43,6 +34,7 @@ public class BoardModel {
 		}
 		
 		spawnBeginTiles();
+		generateNewTile();
 	}
 	
 	public TileModel[][] getTiles(){
@@ -80,7 +72,7 @@ public class BoardModel {
 	}
 	
 	/**
-	 * create new tile
+	 * spawn new tile
 	 * @param direction
 	 */
 	private void spawnNewTile(Direction direction){
@@ -305,7 +297,15 @@ public class BoardModel {
 		}
 		return false;
 	}
-
+	
+	public boolean loadGame(TileModel[][] tiles) {
+		if(tiles == null) {
+			return false;
+		}
+		this.tiles = tiles;
+		return true;
+	}
+	
 	public int getCurrenturn() {
 		return currentTurn;
 	}

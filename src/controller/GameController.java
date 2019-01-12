@@ -9,8 +9,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 import model.Direction;
-import model.SaveFile;
-import model.TileModel;
 import view.game.Game;
 
 public class GameController implements EventHandler<KeyEvent>{
@@ -18,9 +16,9 @@ public class GameController implements EventHandler<KeyEvent>{
 	private MenuController mc;
 	private BoardController bc;
 	
-	public GameController(MenuController mc,TileModel[][] tiles) {
+	public GameController(MenuController mc) {
 		this.mc = mc;
-		this.bc = new BoardController(tiles);
+		this.bc = new BoardController();
 		this.gv = new Game(this);
 		refreshGameStats();
 		enableControls();
@@ -96,8 +94,8 @@ public class GameController implements EventHandler<KeyEvent>{
 	//handle saving game
 	public void saveGame() {
 		disableControls();
-		SaveFile sf = new SaveFile();
-		boolean save = sf.save(getBoardController().getTiles());
+
+		boolean save = bc.saveGame();
 		if(save) {
 			gv.showSaveOk();
 		}else {
